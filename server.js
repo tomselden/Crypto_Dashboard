@@ -1,4 +1,4 @@
-const PORT = 8000;
+const PORT = process.env.PORT;
 const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
@@ -9,7 +9,7 @@ const app = express();
 app.use(cors())
 
 app.get("/", (req, res) => {
-  res.json("template route");
+  res.json(`running on PORT ${PORT}`);
 });
 
 app.get("/news", (req, res) => {
@@ -59,4 +59,4 @@ app.get("/convert", (req, res) => {
         });
   });
 
-app.listen(8000, () => console.log(`Backend is running on ${PORT}`));
+app.listen(process.env.PORT || 8000, () => console.log(`Backend is running on ${PORT}`));
